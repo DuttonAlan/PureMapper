@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PureMapper.Tests/PureMapper.Tests.csproj" />
+  <Project Path="PureMapper/PureMapper.csproj" />
+</Solution>

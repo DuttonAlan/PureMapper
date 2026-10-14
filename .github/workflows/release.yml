@@ -1,0 +1,66 @@
+# Publishes to NuGet.org when a version tag is pushed:
+#   git tag v1.0.0
+#   git push origin v1.0.0
+#
+# Uses NuGet trusted publishing (no long-lived API key):
+# https://learn.microsoft.com/nuget/nuget-org/trusted-publishing
+# Setup:
+#   1. nuget.org > your username > Trusted Publishing > add a policy with
+#      Repository Owner: DuttonAlan, Repository: PureMapper, Workflow File: release.yml
+#   2. GitHub repo > Settings > Secrets and variables > Actions > add NUGET_USER
+#      with your nuget.org profile name (not your email address).
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write # to create the GitHub release
+  id-token: write # to request the OIDC token that is exchanged for a temporary NuGet API key
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Get version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Test
+        run: dotnet test --configuration Release
+
+      - name: Pack
+        run: >
+          dotnet pack PureMapper/PureMapper.csproj
+          --configuration Release
+          --output artifacts
+          -p:Version=${{ steps.version.outputs.version }}
+
+      # The temporary key is valid for one hour, so request it right before pushing.
+      - name: NuGet login (OIDC → temporary API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Push to NuGet.org
+        run: >
+          dotnet nuget push "artifacts/*.nupkg"
+          --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" artifacts/* --title "$GITHUB_REF_NAME" --generate-notes
