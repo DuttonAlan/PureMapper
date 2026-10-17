@@ -22,7 +22,7 @@ dotnet test
 
 1. Open an issue first for larger changes, so we can agree on the approach before you invest time.
 2. Create a branch from `main`.
-3. Add or update tests in `PureMapper.Tests` for every behavior change.
+3. Add or update tests in `tests/PureMapper.Tests` for every behavior change.
 4. Make sure `dotnet build` produces no warnings and `dotnet test` passes. CI treats warnings as errors.
 5. Add an entry under `[Unreleased]` in [CHANGELOG.md](CHANGELOG.md).
 6. Keep public APIs documented with XML comments.
