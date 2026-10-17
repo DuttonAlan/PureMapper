@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PureMapper\PureMapper.csproj" />
+    <ProjectReference Include="..\..\src\PureMapper\PureMapper.csproj" />
   </ItemGroup>
 
 </Project>

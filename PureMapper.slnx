@@ -1,4 +1,8 @@
 <Solution>
-  <Project Path="PureMapper.Tests/PureMapper.Tests.csproj" />
-  <Project Path="PureMapper/PureMapper.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/PureMapper/PureMapper.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PureMapper.Tests/PureMapper.Tests.csproj" />
+  </Folder>
 </Solution>

@@ -41,7 +41,7 @@ jobs:
 
       - name: Pack
         run: >
-          dotnet pack PureMapper/PureMapper.csproj
+          dotnet pack src/PureMapper/PureMapper.csproj
           --configuration Release
           --output artifacts
           -p:Version=${{ steps.version.outputs.version }}
