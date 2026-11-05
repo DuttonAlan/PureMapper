@@ -121,6 +121,15 @@ var config = new MapperConfiguration(cfg =>
 - Mapping into existing nested objects or collections (they are replaced)
 - Native AOT and trimming (mapping relies on reflection and compiled expressions)
 
+## Documentation
+
+The [documentation](https://github.com/DuttonAlan/PureMapper/blob/main/docs/README.md) has four parts:
+
+- **Tutorials**: [Getting started](https://github.com/DuttonAlan/PureMapper/blob/main/docs/tutorials/getting-started.md), [Use PureMapper in a web API](https://github.com/DuttonAlan/PureMapper/blob/main/docs/tutorials/use-in-a-web-api.md)
+- **How-to guides**: [map to records](https://github.com/DuttonAlan/PureMapper/blob/main/docs/how-to/map-to-records-and-immutable-types.md), [update an existing object](https://github.com/DuttonAlan/PureMapper/blob/main/docs/how-to/update-an-existing-object.md), [validate your configuration](https://github.com/DuttonAlan/PureMapper/blob/main/docs/how-to/validate-your-configuration.md), [troubleshoot mapping errors](https://github.com/DuttonAlan/PureMapper/blob/main/docs/how-to/troubleshoot-mapping-errors.md), and more
+- **Reference**: [API](https://github.com/DuttonAlan/PureMapper/blob/main/docs/reference/api.md), [mapping rules](https://github.com/DuttonAlan/PureMapper/blob/main/docs/reference/mapping-rules.md), [exceptions](https://github.com/DuttonAlan/PureMapper/blob/main/docs/reference/exceptions.md), [limitations](https://github.com/DuttonAlan/PureMapper/blob/main/docs/reference/limitations.md)
+- **Explanation**: [how mapping works](https://github.com/DuttonAlan/PureMapper/blob/main/docs/explanation/how-mapping-works.md), [design decisions](https://github.com/DuttonAlan/PureMapper/blob/main/docs/explanation/design-decisions.md), [performance and thread safety](https://github.com/DuttonAlan/PureMapper/blob/main/docs/explanation/performance-and-thread-safety.md)
+
 ## Contributing
 
 Bug reports, ideas and pull requests are welcome. Please read the

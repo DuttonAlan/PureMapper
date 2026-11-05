@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Documentation in `docs/`, structured with the Diátaxis framework: tutorials, how-to guides, reference and explanation.
+
 ## [1.0.0] - 2026-10-14
 
 The first public release of PureMapper: a small, convention-based object-to-object mapper for .NET 10.
